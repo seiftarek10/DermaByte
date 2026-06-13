@@ -1,49 +1,42 @@
-# 🩺 DermaByte — AI-Powered Dermatology & Telehealth Ecosystem
+# 🩺 DermaByte — AI-Powered Dermatology & Telehealth System
 
 <!-- TECH BADGES -->
 <p align="left">
   <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter" />
   <img src="https://img.shields.io/badge/AI--Integration-Dermatology-red?style=for-the-badge" alt="AI" />
   <img src="https://img.shields.io/badge/Telehealth-Zoom%20SDK-blue?style=for-the-badge" alt="Zoom" />
-  <img src="https://img.shields.io/badge/REST%20APIs-Dio%20%2F%20HTTP-orange?style=for-the-badge" alt="REST APIs" />
+  <img src="https://img.shields.io/badge/REST%20APIs-Dio-orange?style=for-the-badge" alt="REST APIs" />
   <img src="https://img.shields.io/badge/Architecture-Clean-brightgreen?style=for-the-badge" alt="Clean Architecture" />
 </p>
 
-> 🚀 Elite telehealth pipeline connecting Patients, Doctors, and Labs via strict **Clean Architecture**. Automates the medical lifecycle from AI diagnosis to live Zoom consultation.
+> 🚀 Healthcare app built on **Clean Architecture**. Connects Patients, Doctors, and Labs in one dynamic workflow from AI scan to Zoom sessions.
 
 ---
 
-### 🏗️ 📐 Presentation & Medical UI
+### ⚡ 🔮 The Patient-Doctor-Lab Workflow
 
-* **🧩 Atomic Clinical Widgets:** Generic components (AI Scan Frames, Dynamic Lab Reports, Live Chat/Request Boards) to prevent UI duplication.
-* **⚡ State-Driven Workflows:** Localized Cubit states to handle real-time medical order mutations without full screen lagging.
+#### 1️⃣ 🤖 Patient: AI Skin Scan
+* **🧠 Logic:** Send skin photos to backend AI for instant analysis.
+* **⚙️ Steps:** Uploads image using `FormData` via **Dio** ➔ Receives AI result ➔ Attaches result automatically to Doctor booking.
 
----
+#### 2️⃣ 🤝 Doctor: Review & Lab Requests
+* **🧠 Logic:** Live "Open Ticket" between patient and doctor before the session.
+* **⚙️ Steps:** Doctor checks AI result ➔ Requests specific lab tests ➔ Patient's UI updates instantly via Cubit.
 
-### ⚡ 🔮 Core Project Functions (The Patient-Doctor-Lab Lifecycle)
+#### 3️⃣ 🧪 Lab: Booking & Upload
+* **🧠 Logic:** Integrated lab subsystem with zero local caching.
+* **⚙️ Steps:** Patient books a lab from the app ➔ Lab uploads results directly to API ➔ Doctor views reports instantly on dashboard.
 
-#### 1️⃣ 🤖 AI DIAGNOSTICS: Skin Scan Pipeline (`analyzeSkinCondition`)
-* **🧠 Logic:** Direct image streaming to a backend AI model for immediate dermatological assessment.
-* **⚙️ Steps:** Uploads photo via `FormData` ➔ Receives AI diagnostic tokens ➔ Automatically attaches the AI result to the doctor’s booking request.
-
-#### 2️⃣ 🤝 DOCTOR PORTAL: Live Request & Lab Orders (`manageDoctorRequest`)
-* **🧠 Logic:** Dynamic open-ticket system between patient and physician before the physical session.
-* **⚙️ Steps:** Doctor reviews AI result ➔ Requests specific lab tests inside the open ticket ➔ Instantly updates patient's live UI state.
-
-#### 3️⃣ 🧪 LAB INTEGRATION: In-App Booking & Upload (`bookAndUploadLabTest`)
-* **🧠 Logic:** Third-party Lab workflow handled entirely within the API infrastructure.
-* **⚙️ Steps:** Patient books a certified Lab via the app ➔ Lab uploads results directly to the backend ➔ Doctor instantly views reports on their clinical dashboard.
-
-#### 4️⃣ 🎥 TELEHEALTH: Live Zoom Session (`initializeZoomSession`)
-* **🧠 Logic:** Secure virtual consultation execution based on fully analyzed medical profiles.
-* **⚙️ Steps:** Validates lab test completion ➔ Generates dynamic video tokens ➔ Launches the live **Zoom virtual session** inside the app.
+#### 4️⃣ 🎥 Telehealth: Online Zoom Session
+* **🧠 Logic:** Live video consultation inside the app.
+* **⚙️ Steps:** Verifies lab files ➔ Generates meeting token ➔ Launches live **Zoom Session**.
 
 ---
 
 ### 🛠️ 💻 Tech Stack
 
 * **📱 Framework:** Flutter (iOS & Android)
-* **📐 Architecture:** Feature-Driven Clean Architecture (Data, Domain, Presentation)
+* **📐 Architecture:** Feature-Driven Clean Architecture
 * **🔄 State Management:** Flutter BLoC / Cubit
-* **🌐 Network:** REST APIs (Dio, Multi-part Image Uploads, Custom Interceptors)
-* **🎥 Integrations:** In-App Video Consultation (Zoom SDK Integration)
+* **🌐 Network:** REST APIs (Dio & Custom Interceptors)
+* **🎥 Integration:** Zoom SDK
