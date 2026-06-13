@@ -1,50 +1,49 @@
-# 🩺 DermaByte — Advanced Medical Dermatology Ecosystem
+# 🩺 DermaByte — AI-Powered Dermatology & Telehealth Ecosystem
 
 <!-- TECH BADGES -->
 <p align="left">
   <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter" />
-  <img src="https://img.shields.io/badge/REST%20APIs-Dio%20%2F%20Retrofit-orange?style=for-the-badge" alt="REST APIs" />
-  <img src="https://img.shields.io/badge/State--Management-BLoC%20%2F%20Cubit-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="BLoC" />
-  <img src="https://img.shields.io/badge/Storage-Hive%20DB-green?style=for-the-badge" alt="Hive" />
+  <img src="https://img.shields.io/badge/AI--Integration-Dermatology-red?style=for-the-badge" alt="AI" />
+  <img src="https://img.shields.io/badge/Telehealth-Zoom%20SDK-blue?style=for-the-badge" alt="Zoom" />
+  <img src="https://img.shields.io/badge/REST%20APIs-Dio%20%2F%20HTTP-orange?style=for-the-badge" alt="REST APIs" />
   <img src="https://img.shields.io/badge/Architecture-Clean-brightgreen?style=for-the-badge" alt="Clean Architecture" />
 </p>
 
-> 🚀 A production-grade healthcare application built on strict **Clean Architecture (Domain, Data, Presentation)**. Powered entirely by a **Centralized REST API** infrastructure for patient diagnostics and clinical data management.
+> 🚀 Elite telehealth pipeline connecting Patients, Doctors, and Labs via strict **Clean Architecture**. Automates the medical lifecycle from AI diagnosis to live Zoom consultation.
 
 ---
 
-### 🏗️ 📐 Presentation & Medical UI Components
+### 🏗️ 📐 Presentation & Medical UI
 
-* **🧩 Medical Widget Library:** Custom generic widgets (Scan Area Trackers, Patient Logs, Shimmer Loaders) built as abstract wrappers to enforce the **DRY Principle**.
-* **⚡ 60fps Performance:** strict utilization of `const` constructors and localized state rebuilding via Cubit to prevent full screen lagging during heavy imaging lists.
-* **🎨 Theme Injector:** Centralized Dark/Light healthcare-compliant theme configurations for consistent user experience.
-
----
-
-### ⚡ 🔮 Core Project Functions & Detailed Logic
-
-#### 1️⃣ 🔍 DIAGNOSTICS: Secure Skin Scan & Image Upload (`uploadAndAnalyzeScan`)
-* **🧠 Logic:** Multi-part file stream processing to upload high-resolution dermatological photos safely to the API.
-* **⚙️ Steps:** Compresses the raw image to prevent payload timeouts ➔ Packs file into a `FormData` object via **Dio** ➔ Tracks progress stream for UI percentage indicators ➔ Receives the diagnostic response or machine-learning analysis tokens from the backend.
-
-#### 2️⃣ 👤 PATIENT FLOW: Offline-First Medical History (`getPatientMedicalRecords`)
-* **🧠 Logic:** Instant caching architecture ensuring physicians and patients access historical diagnoses without network dependency.
-* **⚙️ Steps:** Queries local **Hive Box** for an instant UI render ➔ Executes background HTTP GET request via Dio ➔ Compares responses to update local storage ➔ Silently updates UI if new clinical reports are available.
-
-#### 3️⃣ 📅 BOOKINGS: Realtime Consultation Scheduler (`fetchAvailableSlots`)
-* **🧠 Logic:** Dynamic filtering of clinical appointments and doctor timetables based on live server availability.
-* **⚙️ Steps:** Passes date and specialty parameters via API endpoints ➔ Normalizes JSON arrays into immutable Domain entities ➔ Maps data directly into interactive time-slot grids managed by a dedicated Booking Cubit.
-
-#### 4️⃣ 🌐 NETWORK INFRASTRUCTURE: Resilient Interceptor Engine (`DioClientFactory`)
-* **🧠 Logic:** Centralized API middleware layer to handle global exceptions, security headers, and JWT updates automatically.
-* **⚙️ Steps:** Intercepts outgoing requests to inject Bearer tokens ➔ Listens for HTTP 401 Unauthorized errors ➔ Executes token refresh loops automatically ➔ Globally catches and formats validation errors for user-friendly UI popups.
+* **🧩 Atomic Clinical Widgets:** Generic components (AI Scan Frames, Dynamic Lab Reports, Live Chat/Request Boards) to prevent UI duplication.
+* **⚡ State-Driven Workflows:** Localized Cubit states to handle real-time medical order mutations without full screen lagging.
 
 ---
 
-### 🛠️ 💻 Tech Stack & Production Patterns
+### ⚡ 🔮 Core Project Functions (The Patient-Doctor-Lab Lifecycle)
 
-* **📱 Framework:** Flutter (Cross-Platform iOS & Android)
-* **📐 Architecture:** Feature-Driven Clean Architecture & SOLID Principles
-* **🔄 State Management:** Flutter BloC / Cubit (Unidirectional Flow)
-* **🌐 Network Layer:** Advanced REST APIs (Dio Client, Custom Interceptors, Error Handling)
-* **💾 Data Persistence:** Hive Local Binary DB (Secure Session & Records Caching)
+#### 1️⃣ 🤖 AI DIAGNOSTICS: Skin Scan Pipeline (`analyzeSkinCondition`)
+* **🧠 Logic:** Direct image streaming to a backend AI model for immediate dermatological assessment.
+* **⚙️ Steps:** Uploads photo via `FormData` ➔ Receives AI diagnostic tokens ➔ Automatically attaches the AI result to the doctor’s booking request.
+
+#### 2️⃣ 🤝 DOCTOR PORTAL: Live Request & Lab Orders (`manageDoctorRequest`)
+* **🧠 Logic:** Dynamic open-ticket system between patient and physician before the physical session.
+* **⚙️ Steps:** Doctor reviews AI result ➔ Requests specific lab tests inside the open ticket ➔ Instantly updates patient's live UI state.
+
+#### 3️⃣ 🧪 LAB INTEGRATION: In-App Booking & Upload (`bookAndUploadLabTest`)
+* **🧠 Logic:** Third-party Lab workflow handled entirely within the API infrastructure.
+* **⚙️ Steps:** Patient books a certified Lab via the app ➔ Lab uploads results directly to the backend ➔ Doctor instantly views reports on their clinical dashboard.
+
+#### 4️⃣ 🎥 TELEHEALTH: Live Zoom Session (`initializeZoomSession`)
+* **🧠 Logic:** Secure virtual consultation execution based on fully analyzed medical profiles.
+* **⚙️ Steps:** Validates lab test completion ➔ Generates dynamic video tokens ➔ Launches the live **Zoom virtual session** inside the app.
+
+---
+
+### 🛠️ 💻 Tech Stack
+
+* **📱 Framework:** Flutter (iOS & Android)
+* **📐 Architecture:** Feature-Driven Clean Architecture (Data, Domain, Presentation)
+* **🔄 State Management:** Flutter BLoC / Cubit
+* **🌐 Network:** REST APIs (Dio, Multi-part Image Uploads, Custom Interceptors)
+* **🎥 Integrations:** In-App Video Consultation (Zoom SDK Integration)
